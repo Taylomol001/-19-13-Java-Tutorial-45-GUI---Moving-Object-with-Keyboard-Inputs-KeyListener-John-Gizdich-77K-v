@@ -5,13 +5,13 @@ import java.awt.event.*;
 import java.awt.event.KeyListener;
 
 
-public class Demo extends javax.swing.JFrame implements KeyListener {
+public class ButtonDemo extends javax.swing.JFrame implements KeyListener {
     ActionEvent evt;
     
 
-    public Demo() {
+    public ButtonDemo() {
         initComponents();
-        keyButton.addKeyListener(this);
+        FireButton.addKeyListener(this);
     }
 
     /**
@@ -23,40 +23,51 @@ public class Demo extends javax.swing.JFrame implements KeyListener {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        keyButton = new javax.swing.JButton();
+        FireButton = new javax.swing.JButton();
         keyLabel = new javax.swing.JLabel();
+        WaterButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        keyButton.setText("jButton1");
-        keyButton.addActionListener(new java.awt.event.ActionListener() {
+        FireButton.setText("Fire");
+        FireButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                keyButtonActionPerformed(evt);
+                FireButtonActionPerformed(evt);
             }
         });
 
         keyLabel.setText("Press fire button");
+
+        WaterButton.setText("Water");
+        WaterButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                WaterButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(keyButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(keyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addGap(136, 136, 136)
+                .addComponent(keyLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(FireButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                .addComponent(WaterButton)
+                .addGap(88, 88, 88))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(117, 117, 117)
-                .addComponent(keyButton)
-                .addGap(66, 66, 66)
+                .addGap(116, 116, 116)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(FireButton)
+                    .addComponent(WaterButton))
+                .addGap(67, 67, 67)
                 .addComponent(keyLabel)
                 .addContainerGap(75, Short.MAX_VALUE))
         );
@@ -64,10 +75,14 @@ public class Demo extends javax.swing.JFrame implements KeyListener {
         pack();
     }// </editor-fold>                        
 
-    private void keyButtonActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void FireButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
         this.evt = evt;
         keyLabel.setText("You pressed the fire button");
-    }                                         
+    }                                          
+
+    private void WaterButtonActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        keyLabel.setText("You pressed the wrong key");
+    }                                           
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -83,21 +98,23 @@ public class Demo extends javax.swing.JFrame implements KeyListener {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Demo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ButtonDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Demo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ButtonDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Demo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ButtonDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Demo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ButtonDemo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Demo().setVisible(true);
+                new ButtonDemo().setVisible(true);
             }
         });
     }   
@@ -107,23 +124,23 @@ public class Demo extends javax.swing.JFrame implements KeyListener {
     }
 
     public void keyPressed (KeyEvent e) {
-
-            int keyCode = e.getKeyCode();
-            if (keyCode == KeyEvent.VK_F) {
-                keyButtonActionPerformed(evt);
+        int keyCode = e.getKeyCode();
+        if (keyCode == KeyEvent.VK_F) {
+            FireButtonActionPerformed(evt);
 //                keyLabel.setText("You pressed the fire button");
-            } else {
-
-                    keyLabel.setText("You pressed the wrong key");
-            }
+        } else {
+            WaterButtonActionPerformed(evt);
+//                keyLabel.setText("You pressed the wrong key");
+        }
     }
-
+    
     public void keyReleased(KeyEvent txt) {
             // not putting anything in this method
     }
 
     // Variables declaration - do not modify                     
-    private javax.swing.JButton keyButton;
+    private javax.swing.JButton FireButton;
+    private javax.swing.JButton WaterButton;
     private javax.swing.JLabel keyLabel;
     // End of variables declaration                   
 }
