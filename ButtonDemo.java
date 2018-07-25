@@ -1,3 +1,8 @@
+/*
+* modified version of the code where pressing a "fire" button does the same 
+* thing as pressing the "f" key and a "water" button does the same thing as 
+* pressing any key other than "f".
+*/
 
 import java.awt.*;
 import javax.swing.*;
